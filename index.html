@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>task one</title>
+	<link rel="stylesheet" type="text/css" href="index.css"> 
+  <link rel="stylesheet" type="text/css" href="scrollbar.css">  
+</head>
+<body>
+<div id="content">
+<!--   头部：搜索框+搜索按钮   -->
+  <div id="top">
+    <div id="search">
+      <label><img src="./images/search.png"></label>
+      <input type="text" id="Input_search" name="search" placeholder="请输入姓名" onclick="myclick()">
+    </div>
+    <input type="button" name="search" id="search_button" value="搜索">    
+  </div>
+
+<!-- 中间： 左侧用于显示人员列表  右侧用于显示已经选中人员的列表-->
+  <div id="content_body">
+
+    <div id="left">      
+      <!-- personList的根元素 -->
+      <ul id="personList"> <list class="item" :model="treeData"></list></ul>
+    </div>
+
+    <div id="right">
+      <ul>
+        <li is = "selected_item" v-for = "(person_name,index) in Persons" v-bind:name = "person_name" v-on:remove = "Persons.splice(index,1)"></li>
+      </ul>
+    </div>
+    <div style="clear: both;"></div> <!-- 清除浮动 -->
+  </div>
+
+<!--  底部：取消和确认按钮  -->
+  <div id="footer">
+    <input type="button" name="cancle" id="cancle_button" value="取消">  
+    <input type="submit" name="mysubmit" onclick="showSelected()" id="submit_button" value="确定">  
+  </div>
+
+
+</div>
+<script src="./js/vue.js"></script>
+<script src="./js/vuex.js"></script>
+<script src="./js/main.js"></script>
+</body>
+</html>
